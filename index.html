@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detección de movimiento de ojos</title>
+    <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
+    <script>
+      window.onload = function () {
+        const startBtn = document.getElementById("startBtn");
+        startBtn.addEventListener("click", function () {
+          webgazer.setGazeListener((data, elapsedTime) => {
+            if (data == null) {
+              return;
+            }
+            console.log(data);
+          });
+          webgazer.showPredictionPoints(true);
+        });
+      };
+    </script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 16px;
+      }
+
+      #startBtn {
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+
+      #startBtn:hover {
+        background-color: #0069d9;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          max-width: 600px;
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          max-width: 300px;
+          font-size: 12px;
+        }
+
+        #startBtn {
+          padding: 5px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Detección de movimiento de ojos por medio de IA</h1>
+      <p>Haga clic en el botón a continuación para iniciar la calibración:</p>
+      <button id="startBtn">Iniciar Calibración</button>
+    </div>
+  </body>
+</html>
